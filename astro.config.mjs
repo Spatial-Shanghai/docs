@@ -61,6 +61,11 @@ export default defineConfig({
 					translations: { 'zh-CN': '3D 与空间计算' },
 					items: [
 						{ label: 'Three.js', slug: 'guides/threejs' },
+						{
+							label: 'Three.js AI Skills',
+							translations: { 'zh-CN': 'Three.js AI 技能' },
+							slug: 'guides/threejs-skills',
+						},
 						{ label: 'Tripo3D', slug: 'guides/tripo3d' },
 					],
 				},
