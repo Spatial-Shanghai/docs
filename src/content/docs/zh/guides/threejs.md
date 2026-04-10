@@ -508,6 +508,10 @@ npm run dev
 - [Immersive Web (W3C)](https://immersiveweb.dev/) — WebXR 示例和规范
 - [WebXR API Emulator](https://chromewebstore.google.com/detail/webxr-api-emulator/mjddjgeghkdijejnciaefnkjmkafnnje) — 用于测试的 Chrome 扩展
 
+### 黑客松资源
+
+- [Three.js Skills & Patterns](https://github.com/cloudai-x/threejs-skills) — 精选的 Three.js 开发技能和模式（推荐用于本次黑客松）
+
 ### 学习资源
 
 - [Three.js Journey](https://threejs-journey.com/) — 全面的视频课程（付费，优秀）

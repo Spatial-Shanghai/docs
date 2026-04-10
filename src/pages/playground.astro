@@ -1,0 +1,68 @@
+---
+// Playground wrapper — embeds /vr3dplayground.html in an iframe with a navbar
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VR 3D Playground — Spatial Shanghai 2026</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #000; }
+
+    #docs-navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 48px; display: flex; align-items: center; gap: 12px;
+      padding: 0 16px;
+      background: rgba(10, 10, 20, 0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
+    }
+    #docs-navbar a {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    #docs-navbar a:hover { color: #7eb8ff; }
+    #docs-navbar img { height: 24px; width: auto; }
+    #docs-navbar .nav-sep { color: rgba(255,255,255,0.3); }
+    #docs-navbar .nav-title { color: rgba(255,255,255,0.6); font-weight: 500; }
+    #docs-navbar .nav-right {
+      margin-left: auto; display: flex; gap: 16px; align-items: center;
+    }
+    #docs-navbar .nav-link {
+      color: rgba(255,255,255,0.5); font-size: 13px;
+    }
+    #docs-navbar .nav-link:hover { color: #7eb8ff; }
+
+    #playground-frame {
+      position: fixed;
+      top: 48px; left: 0; right: 0; bottom: 0;
+      border: none;
+      width: 100%;
+      height: calc(100vh - 48px);
+    }
+  </style>
+</head>
+<body>
+  <nav id="docs-navbar">
+    <a href="/">
+      <img src="/favicon.png" alt="Spatial Shanghai 2026" />
+      <span>Spatial Shanghai 2026</span>
+    </a>
+    <span class="nav-sep">›</span>
+    <span class="nav-title">VR 3D Playground</span>
+    <div class="nav-right">
+      <a class="nav-link" href="/vr3dplayground.html" target="_blank" rel="noopener">
+        Open Fullscreen ↗
+      </a>
+      <a class="nav-link" href="https://github.com/jesseyu1231/vr3dplayground" target="_blank" rel="noopener">
+        GitHub Source ↗
+      </a>
+    </div>
+  </nav>
+  <iframe id="playground-frame" src="/vr3dplayground.html" title="VR 3D Playground" allow="xr-spatial-tracking; microphone"></iframe>
+</body>
+</html>

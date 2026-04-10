@@ -5,7 +5,7 @@ template: splash
 hero:
   tagline: "24小时AR/VR智能工程黑客松 — 2026年4月25-26日"
   image:
-    file: ../../../assets/logo.png
+    file: ../../../assets/hero.jpg
   actions:
     - text: 立即报名
       link: https://luma.com/x7v1v5mm
@@ -17,6 +17,10 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard title="VR 3D Playground — 立即体验" description="一个交互式 Three.js 演示——在浏览器或 VR 头显中打开体验。" href="/playground" />
 
 ## 工具与资源
 

@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import llmsTxt from './src/integrations/llms-txt.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -65,5 +66,6 @@ export default defineConfig({
 				},
 			],
 		}),
+		llmsTxt(),
 	],
 });

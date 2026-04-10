@@ -5,7 +5,7 @@ template: splash
 hero:
   tagline: "24-Hour Agentic Engineering Hackathon in AR/VR — April 25-26, 2026"
   image:
-    file: ../../assets/logo.png
+    file: ../../assets/hero.jpg
   actions:
     - text: Register Now
       link: https://luma.com/x7v1v5mm
@@ -17,6 +17,10 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+<LinkCard title="VR 3D Playground — Try it now" description="An interactive Three.js demo — open it in your browser or VR headset." href="/playground" />
 
 ## Tools & Resources
 

@@ -508,6 +508,10 @@ Open the browser and you will see three spinning cubes. Click "Enter AR" or "Ent
 - [Immersive Web (W3C)](https://immersiveweb.dev/) — WebXR samples and specs
 - [WebXR API Emulator](https://chromewebstore.google.com/detail/webxr-api-emulator/mjddjgeghkdijejnciaefnkjmkafnnje) — Chrome extension for testing
 
+### Hackathon Resources
+
+- [Three.js Skills & Patterns](https://github.com/cloudai-x/threejs-skills) — Curated skills and patterns for Three.js development (recommended for this hackathon)
+
 ### Learning Resources
 
 - [Three.js Journey](https://threejs-journey.com/) — Comprehensive video course (paid, excellent)
