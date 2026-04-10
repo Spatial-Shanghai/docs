@@ -43,6 +43,38 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run deploy`          | Build and deploy to production (Cloudflare Pages) |
+
+## Deployment
+
+This site is deployed to [Cloudflare Pages](https://pages.cloudflare.com/) at `spatial-shanghai.ritsdev.top`.
+
+### Setup
+
+1. Log in to Cloudflare: `npx wrangler login`
+2. Verify: `npx wrangler whoami`
+
+### Production
+
+```bash
+npm run deploy
+```
+
+Builds the site and deploys to the `main` branch (production environment).
+
+### Preview
+
+```bash
+astro build && wrangler pages deploy dist --project-name spatial-shanghai
+```
+
+Omitting `--branch main` creates a preview deployment with a unique URL like `https://<hash>.spatial-shanghai.pages.dev`.
+
+### Configuration
+
+- **Pages project**: `spatial-shanghai`
+- **Production branch**: `main`
+- **Custom domain**: `spatial-shanghai.ritsdev.top`
 
 ## 👀 Want to learn more?
 
