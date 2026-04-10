@@ -1,0 +1,89 @@
+<!-- Cookie Consent Banner + Analytics (GA + Clarity) -->
+<script is:inline>
+(function() {
+  var CONSENT_KEY = 'cookie_consent';
+
+  function isZh() {
+    return window.location.pathname.startsWith('/zh');
+  }
+
+  function hasConsent() {
+    return localStorage.getItem(CONSENT_KEY) === 'accepted';
+  }
+
+  function loadAnalytics() {
+    // Google Analytics
+    var gs = document.createElement('script');
+    gs.async = true;
+    gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-S7QKFNLYBK';
+    document.head.appendChild(gs);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-S7QKFNLYBK');
+
+    // Microsoft Clarity
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w9hl2h2egi");
+  }
+
+  function updateLanguage() {
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    var zh = isZh();
+    banner.querySelector('[data-msg-en]').style.display = zh ? 'none' : '';
+    banner.querySelector('[data-msg-zh]').style.display = zh ? '' : 'none';
+    banner.querySelector('[data-btn-accept]').textContent = zh ? '接受' : 'Accept';
+    banner.querySelector('[data-btn-decline]').textContent = zh ? '拒绝' : 'Decline';
+  }
+
+  function showBanner() {
+    var banner = document.getElementById('cookie-banner');
+    if (banner) {
+      updateLanguage();
+      banner.style.display = 'flex';
+    }
+  }
+
+  function hideBanner() {
+    var banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'none';
+  }
+
+  if (hasConsent()) {
+    loadAnalytics();
+  } else if (localStorage.getItem(CONSENT_KEY) !== 'declined') {
+    document.addEventListener('DOMContentLoaded', showBanner);
+  }
+
+  window._cookieAccept = function() {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    hideBanner();
+    loadAnalytics();
+  };
+
+  window._cookieDecline = function() {
+    localStorage.setItem(CONSENT_KEY, 'declined');
+    hideBanner();
+  };
+})();
+</script>
+
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:rgba(15,15,25,0.95); backdrop-filter:blur(12px); border-top:1px solid rgba(255,255,255,0.1); padding:16px 24px; align-items:center; justify-content:center; gap:16px; font-family:system-ui,sans-serif; font-size:14px; color:#ccc; flex-wrap:wrap;">
+  <span>
+    <span data-msg-en>This site uses cookies for analytics to improve your experience.</span>
+    <span data-msg-zh style="display:none;">本网站使用cookie进行分析以改善您的体验。</span>
+  </span>
+  <div style="display:flex; gap:8px; flex-shrink:0;">
+    <button data-btn-accept onclick="window._cookieAccept()" style="padding:8px 20px; border-radius:6px; border:none; background:#7c3aed; color:#fff; font-size:13px; font-weight:600; cursor:pointer;">
+      Accept
+    </button>
+    <button data-btn-decline onclick="window._cookieDecline()" style="padding:8px 20px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:transparent; color:#aaa; font-size:13px; cursor:pointer;">
+      Decline
+    </button>
+  </div>
+</div>

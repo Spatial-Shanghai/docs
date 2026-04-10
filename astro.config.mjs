@@ -12,6 +12,9 @@ export default defineConfig({
 				src: './src/assets/logo.png',
 			},
 			favicon: '/favicon.png',
+			components: {
+				Head: './src/components/Head.astro',
+			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com' },
 			],
