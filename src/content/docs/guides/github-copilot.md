@@ -56,6 +56,8 @@ If automatic verification does not work, you will need to upload a document. Acc
 
 > **Important**: The document must show your **name**, your **school name**, and a **current date** (or date range that includes the current semester). Expired documents will be rejected.
 
+> **Network Tip**: The school Wi-Fi routes traffic through a VPN, which can cause GitHub's verification to fail or behave unexpectedly. If you run into issues during sign-up or verification, **switch to your mobile phone's hotspot** instead. This gives you a direct internet connection that GitHub can verify without VPN interference.
+
 ### 1.4 Wait for Approval
 
 - If you used an `.edu` email, approval is usually **instant to a few minutes**.
