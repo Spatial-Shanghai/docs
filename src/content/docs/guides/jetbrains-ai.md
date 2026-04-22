@@ -1,5 +1,5 @@
 ---
-title: "JetBrains + Claude Code via Z.AI Setup Guide"
+title: "JetBrains Recommended Setup"
 description: "Recommended IDE setup for Spatial Shanghai 2026 — use PyCharm (or any JetBrains IDE) with Claude Code in the terminal, powered by the Z.AI API."
 ---
 
@@ -24,7 +24,20 @@ JetBrains offers **free licenses for all their IDEs** to students. As an NYU Sha
 2. Use your `@nyu.edu` or `@shanghai.nyu.edu` email — JetBrains verifies via email domain.
 3. Create a JetBrains Account if you don't have one, using your university email.
 4. Check your inbox for a confirmation email and click the verification link.
-5. Download your IDE from [jetbrains.com/products](https://www.jetbrains.com/products/). Sign in with your JetBrains Account to activate.
+5. Download your IDE from [jetbrains.com/products](https://www.jetbrains.com/products/).
+
+### Activating with the License Server
+
+Once PyCharm is installed and open, you can activate it using the hackathon license server:
+
+1. On the welcome screen, click **Unlock Pro Features** (or go to **Help > Register** if already inside the IDE).
+2. Select **Activate License**.
+3. Choose **License Server**.
+4. Enter the following URL:
+   ```
+   https://jetbrains.ritsdev.top
+   ```
+5. Click **Activate** — your license will be activated immediately.
 
 > **Tip:** Install the **JetBrains Toolbox App** to manage all your IDEs in one place: [jetbrains.com/toolbox-app](https://www.jetbrains.com/toolbox-app/).
 
