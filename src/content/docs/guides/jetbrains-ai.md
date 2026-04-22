@@ -1,6 +1,6 @@
 ---
-title: "JetBrains Recommended Setup"
-description: "Recommended IDE setup for Spatial Shanghai 2026 — use PyCharm (or any JetBrains IDE) with Claude Code in the terminal, powered by the Z.AI API."
+title: "PyCharm + Claude Code + Z.AI"
+description: "Recommended IDE setup for Spatial Shanghai 2026 — use PyCharm with Claude Code in the terminal, powered by the Z.AI API."
 ---
 
 ## Recommended Setup Overview
@@ -16,32 +16,17 @@ This gives you a powerful agentic AI assistant that can read, write, and reason 
 
 ---
 
-## Step 1: Get a Free Student JetBrains License
+## Step 1: Download and Activate PyCharm
 
-JetBrains offers **free licenses for all their IDEs** to students. As an NYU Shanghai student, you are eligible.
-
-1. Go to [jetbrains.com/community/education/#students](https://www.jetbrains.com/community/education/#students) and click **Apply Now**.
-2. Use your `@nyu.edu` or `@shanghai.nyu.edu` email — JetBrains verifies via email domain.
-3. Create a JetBrains Account if you don't have one, using your university email.
-4. Check your inbox for a confirmation email and click the verification link.
-5. Download your IDE from [jetbrains.com/products](https://www.jetbrains.com/products/).
-
-### Activating with the License Server
-
-Once PyCharm is installed and open, you can activate it using the hackathon license server:
-
-1. On the welcome screen, click **Unlock Pro Features** (or go to **Help > Register** if already inside the IDE).
-2. Select **Activate License**.
-3. Choose **License Server**.
-4. Enter the following URL:
+1. Download PyCharm from [jetbrains.com/pycharm](https://www.jetbrains.com/pycharm/) and install it.
+2. Open PyCharm. On the welcome screen, click **Unlock Pro Features** (or go to **Help > Register** if already inside the IDE).
+3. Select **Activate License**.
+4. Choose **License Server**.
+5. Enter the following URL:
    ```
    https://jetbrains.ritsdev.top
    ```
-5. Click **Activate** — your license will be activated immediately.
-
-> **Tip:** Install the **JetBrains Toolbox App** to manage all your IDEs in one place: [jetbrains.com/toolbox-app](https://www.jetbrains.com/toolbox-app/).
-
-For this hackathon, **PyCharm** is recommended. If you are building a web-based XR project with TypeScript/Three.js, use **WebStorm** instead.
+6. Click **Activate** — your license will be activated immediately.
 
 ---
 
@@ -216,7 +201,7 @@ npm install -g @anthropic-ai/claude-code
 
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code) — Official Claude Code docs
 - [Z.AI / BigModel Platform](https://bigmodel.cn) — Z.AI API dashboard
-- [JetBrains Student License](https://www.jetbrains.com/community/education/#students) — Apply for free IDE access
+- [PyCharm Download](https://www.jetbrains.com/pycharm/) — Download PyCharm
 - [JetBrains Toolbox App](https://www.jetbrains.com/toolbox-app/) — Manage all JetBrains IDEs
 
 ---

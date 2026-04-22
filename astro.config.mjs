@@ -53,8 +53,8 @@ export default defineConfig({
 						},
 						{ label: 'Claude Code + Z.ai', slug: 'guides/claude-code' },
 						{
-							label: 'JetBrains AI',
-							translations: { 'zh-CN': 'JetBrains AI 助手' },
+							label: 'JetBrains PyCharm (Recommended Setup)',
+							translations: { 'zh-CN': 'JetBrains PyCharm（推荐设置）' },
 							slug: 'guides/jetbrains-ai',
 						},
 					],
