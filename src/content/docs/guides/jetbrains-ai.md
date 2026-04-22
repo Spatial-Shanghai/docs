@@ -16,6 +16,17 @@ This gives you a powerful agentic AI assistant that can read, write, and reason 
 
 ---
 
+## Step 0: Connect to the NYU Network
+
+The license server (`jetbrains.ritsdev.top`) is only accessible from within the NYU network. Before activating PyCharm, make sure you are connected to one of the following:
+
+- **nyu** Wi-Fi on campus
+- **NYU VPN** if you are off-campus — download it from [nyu.edu/life/information-technology/getting-started/network-and-connectivity/vpn.html](https://www.nyu.edu/life/information-technology/getting-started/network-and-connectivity/vpn.html)
+
+> You only need to be on the NYU network for the activation step. Once activated, PyCharm works normally on any internet connection.
+
+---
+
 ## Step 1: Download and Activate PyCharm
 
 1. Download PyCharm from [jetbrains.com/pycharm](https://www.jetbrains.com/pycharm/) and install it.
