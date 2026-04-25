@@ -44,17 +44,17 @@ export default defineConfig({
           translations: { "zh-CN": "AI 编程工具" },
           items: [
             { label: "GitHub Copilot", slug: "guides/github-copilot" },
-            { label: "Claude Code + Z.ai", slug: "guides/claude-code" },
-            {
-              label: "JetBrains PyCharm (Recommended Setup)",
-              translations: { "zh-CN": "JetBrains PyCharm（推荐设置）" },
-              slug: "guides/jetbrains-ai",
-            },
             {
               label: "v0 by Vercel",
               translations: { "zh-CN": "v0 (Vercel)" },
               slug: "guides/v0",
             },
+            {
+              label: "JetBrains PyCharm (Recommended Setup)",
+              translations: { "zh-CN": "JetBrains PyCharm（推荐设置）" },
+              slug: "guides/jetbrains-ai",
+            },
+            { label: "Claude Code + Z.ai", slug: "guides/claude-code" },
           ],
         },
         {
