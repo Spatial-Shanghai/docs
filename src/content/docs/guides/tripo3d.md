@@ -54,13 +54,13 @@ The text-to-3D feature lets you describe an object in natural language, and Trip
 
 ### Prompt Tips for Text-to-3D
 
-| Tip | Example |
-|---|---|
-| Be specific about shape and material | `"A smooth ceramic coffee mug with a curved handle"` |
-| Mention art style | `"A stylized cartoon sword"` or `"A photorealistic apple"` |
-| Include color details | `"A red sports car with black racing stripes"` |
-| Specify polygon style if needed | `"A low-poly fox"` or `"A high-detail dragon sculpture"` |
-| Keep it to a single object | Single objects produce better results than complex scenes |
+| Tip                                  | Example                                                    |
+| ------------------------------------ | ---------------------------------------------------------- |
+| Be specific about shape and material | `"A smooth ceramic coffee mug with a curved handle"`       |
+| Mention art style                    | `"A stylized cartoon sword"` or `"A photorealistic apple"` |
+| Include color details                | `"A red sports car with black racing stripes"`             |
+| Specify polygon style if needed      | `"A low-poly fox"` or `"A high-detail dragon sculpture"`   |
+| Keep it to a single object           | Single objects produce better results than complex scenes  |
 
 ---
 
@@ -98,12 +98,12 @@ The image-to-3D feature takes a 2D reference image and reconstructs a full 3D mo
 
 Tripo3D supports exporting in several standard 3D formats:
 
-| Format | Best For | Notes |
-|---|---|---|
-| **GLB** | Three.js, WebXR, web apps | Binary GLTF — compact, includes textures. Recommended for web. |
-| **GLTF** | Three.js, WebXR, web apps | JSON-based with separate texture files. |
-| **FBX** | Unity, Unreal Engine | Widely supported in game engines. |
-| **OBJ** | General 3D software | Simple format, good for static meshes. |
+| Format   | Best For                  | Notes                                                          |
+| -------- | ------------------------- | -------------------------------------------------------------- |
+| **GLB**  | Three.js, WebXR, web apps | Binary GLTF — compact, includes textures. Recommended for web. |
+| **GLTF** | Three.js, WebXR, web apps | JSON-based with separate texture files.                        |
+| **FBX**  | Unity, Unreal Engine      | Widely supported in game engines.                              |
+| **OBJ**  | General 3D software       | Simple format, good for static meshes.                         |
 
 ### How to Export
 
@@ -131,19 +131,24 @@ Here is an example of generating a 3D model from a text prompt using the Tripo3D
 
 ```javascript
 // Step 1: Create a task to generate a 3D model
-const createTaskResponse = await fetch("https://api.tripo3d.ai/v2/openapi/task", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${process.env.TRIPO3D_API_KEY}`
+const createTaskResponse = await fetch(
+  "https://api.tripo3d.ai/v2/openapi/task",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.TRIPO3D_API_KEY}`,
+    },
+    body: JSON.stringify({
+      type: "text_to_model",
+      prompt: "A futuristic helmet with a glowing visor",
+    }),
   },
-  body: JSON.stringify({
-    type: "text_to_model",
-    prompt: "A futuristic helmet with a glowing visor"
-  })
-});
+);
 
-const { data: { task_id } } = await createTaskResponse.json();
+const {
+  data: { task_id },
+} = await createTaskResponse.json();
 console.log("Task created:", task_id);
 
 // Step 2: Poll for task completion
@@ -153,9 +158,9 @@ async function waitForTask(taskId) {
       `https://api.tripo3d.ai/v2/openapi/task/${taskId}`,
       {
         headers: {
-          "Authorization": `Bearer ${process.env.TRIPO3D_API_KEY}`
-        }
-      }
+          Authorization: `Bearer ${process.env.TRIPO3D_API_KEY}`,
+        },
+      },
     );
     const { data } = await statusResponse.json();
 
@@ -166,7 +171,7 @@ async function waitForTask(taskId) {
     }
 
     // Wait 2 seconds before polling again
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 }
 
@@ -184,30 +189,37 @@ formData.append("file", imageFile); // imageFile is a File or Blob
 const uploadResponse = await fetch("https://api.tripo3d.ai/v2/openapi/upload", {
   method: "POST",
   headers: {
-    "Authorization": `Bearer ${process.env.TRIPO3D_API_KEY}`
+    Authorization: `Bearer ${process.env.TRIPO3D_API_KEY}`,
   },
-  body: formData
+  body: formData,
 });
 
-const { data: { image_token } } = await uploadResponse.json();
+const {
+  data: { image_token },
+} = await uploadResponse.json();
 
 // Step 2: Create an image-to-model task
-const createTaskResponse = await fetch("https://api.tripo3d.ai/v2/openapi/task", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${process.env.TRIPO3D_API_KEY}`
+const createTaskResponse = await fetch(
+  "https://api.tripo3d.ai/v2/openapi/task",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.TRIPO3D_API_KEY}`,
+    },
+    body: JSON.stringify({
+      type: "image_to_model",
+      file: {
+        type: "jpg",
+        file_token: image_token,
+      },
+    }),
   },
-  body: JSON.stringify({
-    type: "image_to_model",
-    file: {
-      type: "jpg",
-      file_token: image_token
-    }
-  })
-});
+);
 
-const { data: { task_id } } = await createTaskResponse.json();
+const {
+  data: { task_id },
+} = await createTaskResponse.json();
 
 // Step 3: Poll for completion (same as text-to-3D)
 const result = await waitForTask(task_id);
@@ -228,6 +240,105 @@ const buffer = Buffer.from(await modelBlob.arrayBuffer());
 await writeFile("generated-model.glb", buffer);
 ```
 
+### Using the Tripo3D API with Python
+
+If you prefer Python for backend integration, here's a complete example that generates a 3D model using the Tripo3D API:
+
+```python
+import requests
+import time
+
+# Configuration
+API_KEY = "your-tripo3d-api-key"
+BASE_URL = "https://api.tripo3d.ai/v2/openapi"
+
+headers = {
+    "Authorization": f"Bearer {API_KEY}",
+    "Content-Type": "application/json"
+}
+
+def run_tripo_task():
+    # Step 1: Submit a task to generate a 3D model from text
+    payload = {
+        "type": "text_to_model",
+        "prompt": "A cute wooden chair"
+    }
+
+    print("🚀 Submitting task to Tripo...")
+    try:
+        response = requests.post(f"{BASE_URL}/task", headers=headers, json=payload)
+        res_data = response.json()
+    except Exception as e:
+        print(f"❌ Network error: {e}")
+        return
+
+    if res_data.get("code") != 0:
+        print(f"❌ Task submission failed: {res_data}")
+        return
+
+    task_id = res_data["data"]["task_id"]
+    print(f"✅ Task created! ID: {task_id}")
+
+    # Step 2: Poll for results
+    print("⏳ Generating 3D model, please wait...")
+    while True:
+        try:
+            status_res = requests.get(f"{BASE_URL}/task/{task_id}", headers=headers).json()
+        except Exception as e:
+            print(f"\n⚠️ Query error (retrying): {e}")
+            time.sleep(2)
+            continue
+
+        data = status_res.get("data", {})
+        status = data.get("status")
+        progress = data.get("progress", 0)
+
+        if status == "success":
+            print("\n✨ Generation successful!")
+            print("=" * 60)
+
+            # Get the result dictionary
+            result = data.get("result", {})
+
+            # Automatically iterate through and extract all resources with URLs
+            found_resource = False
+            for key, value in result.items():
+                # Case A: Result is a dictionary with a URL
+                if isinstance(value, dict) and "url" in value:
+                    print(f"🔗 [{key.upper()}]: {value['url']}")
+                    found_resource = True
+                # Case B: Result is directly a URL string
+                elif isinstance(value, str) and value.startswith("http"):
+                    print(f"🔗 [{key.upper()}]: {value}")
+                    found_resource = True
+
+            if not found_resource:
+                print("⚠️ No direct links found in result, check raw data:")
+                print(result)
+
+            print("=" * 60)
+            break
+
+        elif status == "failed":
+            error_msg = data.get("error_message", "Unknown error")
+            print(f"\n❌ Task failed: {error_msg}")
+            break
+        else:
+            # Show progress dynamically
+            print(f"\r Current status: {status} | Progress: {progress}%", end="", flush=True)
+            time.sleep(2)
+
+if __name__ == "__main__":
+    run_tripo_task()
+```
+
+This Python script demonstrates the full workflow:
+
+1. Authenticates with your API key
+2. Submits a text-to-model generation task
+3. Polls the task status every 2 seconds
+4. Extracts and displays the download URL when complete
+
 ---
 
 ## Integrating with Three.js and WebXR
@@ -242,7 +353,12 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 // Set up the scene
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000,
+);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -260,25 +376,28 @@ loader.load(
   "path/to/your-model.glb",
   (gltf) => {
     const model = gltf.scene;
-    
+
     // Center and scale the model
     const box = new THREE.Box3().setFromObject(model);
     const center = box.getCenter(new THREE.Vector3());
     model.position.sub(center);
-    
+
     const size = box.getSize(new THREE.Vector3());
     const maxDim = Math.max(size.x, size.y, size.z);
     const scale = 2 / maxDim; // Normalize to roughly 2 units
     model.scale.setScalar(scale);
-    
+
     scene.add(model);
   },
   (progress) => {
-    console.log("Loading:", (progress.loaded / progress.total * 100).toFixed(1) + "%");
+    console.log(
+      "Loading:",
+      ((progress.loaded / progress.total) * 100).toFixed(1) + "%",
+    );
   },
   (error) => {
     console.error("Error loading model:", error);
-  }
+  },
 );
 
 // Position camera and start render loop
@@ -303,7 +422,12 @@ import { VRButton } from "three/addons/webxr/VRButton.js";
 // For AR, use: import { ARButton } from "three/addons/webxr/ARButton.js";
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 100);
+const camera = new THREE.PerspectiveCamera(
+  70,
+  window.innerWidth / window.innerHeight,
+  0.01,
+  100,
+);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.xr.enabled = true;
@@ -346,14 +470,16 @@ async function generateAndLoad(prompt, scene) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${API_KEY}`
+      Authorization: `Bearer ${API_KEY}`,
     },
     body: JSON.stringify({
       type: "text_to_model",
-      prompt: prompt
-    })
+      prompt: prompt,
+    }),
   });
-  const { data: { task_id } } = await taskResponse.json();
+  const {
+    data: { task_id },
+  } = await taskResponse.json();
 
   // 2. Wait for generation to complete
   const result = await waitForTask(task_id);
@@ -361,20 +487,51 @@ async function generateAndLoad(prompt, scene) {
   // 3. Load the model directly from the URL into Three.js
   const loader = new GLTFLoader();
   return new Promise((resolve, reject) => {
-    loader.load(result.output.model, (gltf) => {
-      const model = gltf.scene;
-      scene.add(model);
-      resolve(model);
-    }, undefined, reject);
+    loader.load(
+      result.output.model,
+      (gltf) => {
+        const model = gltf.scene;
+        scene.add(model);
+        resolve(model);
+      },
+      undefined,
+      reject,
+    );
   });
 }
 
 // Usage
 const model = await generateAndLoad(
   "A glowing crystal orb floating on a stone pedestal",
-  scene
+  scene,
 );
 ```
+
+---
+
+## Backend Integration Templates
+
+If you are building a full-stack application with Tripo3D, **pre-built integration templates are available** in the `public/skills/tripo-integration/` folder. These templates include:
+
+- **Next.js API routes** (both Pages and App Router) for model generation and status polling
+- **Backend handlers** for Tripo3D API integration
+- **Example packages** to get you started quickly
+
+Instead of writing API endpoints from scratch, copy the templates from `public/skills/tripo-integration/templates/` into your project. They include:
+
+- `route-nextjs-pages-generate.ts` — POST endpoint to generate models
+- `route-nextjs-pages-status.ts` — GET endpoint to check generation status
+- `route-nextjs-app-generate.ts` — App Router version of generation
+- `standalone-package.json` — Dependencies needed for the backend
+
+**To use these templates:**
+
+1. Copy the relevant template files into your `pages/api/` or `app/api/` directory
+2. Install dependencies listed in `standalone-package.json`
+3. Update environment variables with your Tripo3D API key
+4. Call these endpoints from your frontend to generate models dynamically
+
+This saves hours of boilerplate coding during the hackathon.
 
 ---
 
@@ -425,14 +582,14 @@ Generated models may sometimes have high polygon counts. For smooth performance 
 
 ## Quick Reference
 
-| Task | Where |
-|---|---|
-| Generate model from text | [tripo3d.ai](https://www.tripo3d.ai) dashboard or API |
-| Generate model from image | [tripo3d.ai](https://www.tripo3d.ai) dashboard or API |
-| API documentation | [tripo3d.ai/docs](https://www.tripo3d.ai/docs) |
-| Best export format for web | GLB |
-| Load in Three.js | `GLTFLoader` from `three/addons/loaders/GLTFLoader.js` |
-| Compress models | `npx gltf-transform optimize input.glb output.glb` |
+| Task                       | Where                                                  |
+| -------------------------- | ------------------------------------------------------ |
+| Generate model from text   | [tripo3d.ai](https://www.tripo3d.ai) dashboard or API  |
+| Generate model from image  | [tripo3d.ai](https://www.tripo3d.ai) dashboard or API  |
+| API documentation          | [tripo3d.ai/docs](https://www.tripo3d.ai/docs)         |
+| Best export format for web | GLB                                                    |
+| Load in Three.js           | `GLTFLoader` from `three/addons/loaders/GLTFLoader.js` |
+| Compress models            | `npx gltf-transform optimize input.glb output.glb`     |
 
 ---
 
