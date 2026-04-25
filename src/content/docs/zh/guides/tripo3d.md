@@ -120,10 +120,13 @@ Tripo3D支持以多种标准3D格式导出：
 
 ### 获取API密钥
 
-1. 登录 [tripo3d.ai](https://www.tripo3d.ai)。
-2. 导航到你的帐户设置或API部分。
-3. 生成或复制你的API密钥。
-4. 安全存储——将其作为 `TRIPO3D_API_KEY` 添加到你的 `.env` 文件中。
+对于本次黑客松，**请向Jesse（黑客松组织者）申请你的Tripo3D API密钥**。他会为你提供在活动期间免费使用Tripo3D API所需的凭证。
+
+当你从Jesse那里收到API密钥后：
+
+1. 安全地将其存储在你的 `.env` 文件中，命名为 `TRIPO3D_API_KEY`。
+2. 切勿将 `.env` 文件提交到git或公开分享你的API密钥。
+3. 你就可以开始使用下面的API示例了。
 
 ### 通过API进行文本转3D
 

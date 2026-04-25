@@ -120,10 +120,13 @@ Tripo3D supports exporting in several standard 3D formats:
 
 ### Getting Your API Key
 
-1. Log in to [tripo3d.ai](https://www.tripo3d.ai).
-2. Navigate to your account settings or the API section.
-3. Generate or copy your API key.
-4. Store it securely — add it to your `.env` file as `TRIPO3D_API_KEY`.
+For this hackathon, **ask Jesse (the hackathon organizer) for your Tripo3D API key**. He will provide you with the credentials needed to access the Tripo3D API for free during the event.
+
+Once you receive your API key from Jesse:
+
+1. Store it securely in your `.env` file as `TRIPO3D_API_KEY`.
+2. Never commit the `.env` file to git or share your API key publicly.
+3. You're ready to start using the API examples below.
 
 ### Text-to-3D via API
 
