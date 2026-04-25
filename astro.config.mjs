@@ -37,6 +37,11 @@ export default defineConfig({
               translations: { "zh-CN": "关于黑客松" },
               slug: "about",
             },
+            {
+              label: "Event Schedule",
+              translations: { "zh-CN": "赛程安排" },
+              slug: "schedule",
+            },
           ],
         },
         {
