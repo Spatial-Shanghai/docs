@@ -60,6 +60,11 @@ export default defineConfig({
               slug: "guides/jetbrains-ai",
             },
             { label: "Claude Code + Z.ai", slug: "guides/claude-code" },
+            {
+              label: "Claude Code Skills Folder",
+              translations: { "zh-CN": "Claude Code 技能文件夹" },
+              slug: "guides/claude-code-skills",
+            },
           ],
         },
         {
