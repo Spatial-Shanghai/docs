@@ -43,7 +43,17 @@ node --version
 
 ### 安装 Claude Code
 
-通过 npm 全局安装 Claude Code：
+按照以下步骤安装 Claude Code：
+
+**步骤 1：运行 Z.ai coding helper**
+
+```bash
+npx @z_ai/coding-helper
+```
+
+这将引导你完成设置过程，帮助你配置 Claude Code 并获取 Z.ai 访问权限。
+
+**步骤 2：通过 npm 全局安装 Claude Code**
 
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -56,6 +66,17 @@ claude --version
 ```
 
 你应该在终端中看到版本号输出。
+
+### 获取你的 API 密钥
+
+运行 coding helper 后，你需要获取 API 密钥。请向 **Jesse**（黑客松组织者）获取你的 Z.ai API 密钥。他们会为你提供在黑客松期间免费使用 Claude Code 所需的凭证。
+
+获得 API 密钥后，coding helper 会引导你进行设置，或者你也可以手动配置环境变量：
+
+```bash
+export ANTHROPIC_API_KEY="你的-api-key"
+export ANTHROPIC_BASE_URL="https://api.z.ai/v1"
+```
 
 ---
 
@@ -194,11 +215,13 @@ Claude Code 可以搜索你的项目以理解架构并找到相关代码。
 你给 Claude Code 提供的上下文越多，结果就越好。比较以下提示：
 
 **模糊（效果差）：**
+
 ```
 > Make a 3D scene
 ```
 
 **具体（好得多）：**
+
 ```
 > Create a Three.js scene in src/Scene.tsx with a WebXR-compatible renderer,
 > a ground plane with grid texture, ambient and directional lighting,
@@ -244,14 +267,14 @@ Claude Code 会分析错误、检查你的代码并提出修复方案。
 
 ### 有用的键盘快捷键
 
-| 快捷键 | 操作 |
-|---|---|
-| `Shift+Tab` | 切换计划模式 |
-| `Ctrl+C` | 取消当前响应 |
-| `Escape` | 清除当前输入 |
-| `/init` | 初始化 CLAUDE.md |
-| `/help` | 显示所有命令 |
-| `/clear` | 清除对话历史 |
+| 快捷键      | 操作             |
+| ----------- | ---------------- |
+| `Shift+Tab` | 切换计划模式     |
+| `Ctrl+C`    | 取消当前响应     |
+| `Escape`    | 清除当前输入     |
+| `/init`     | 初始化 CLAUDE.md |
+| `/help`     | 显示所有命令     |
+| `/clear`    | 清除对话历史     |
 
 ### 团队合作
 

@@ -43,7 +43,17 @@ If you do not have Node.js installed, download it from [nodejs.org](https://node
 
 ### Install Claude Code
 
-Install Claude Code globally via npm:
+Follow these steps to install Claude Code:
+
+**Step 1: Run the Z.ai coding helper**
+
+```bash
+npx @z_ai/coding-helper
+```
+
+This will guide you through the setup process and help you configure Claude Code with Z.ai access.
+
+**Step 2: Install Claude Code globally via npm**
 
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -56,6 +66,17 @@ claude --version
 ```
 
 You should see the version number printed in your terminal.
+
+### Get Your API Key
+
+After running the coding helper, you'll need to get your API key. Ask **Jesse** (the hackathon organizer) for your Z.ai API key. They will provide you with the credentials needed to access Claude Code for free during the hackathon.
+
+Once you have your API key, the coding helper will guide you to set it up, or you can configure it manually by setting the following environment variable:
+
+```bash
+export ANTHROPIC_API_KEY="your-api-key-from-jesse"
+export ANTHROPIC_BASE_URL="https://api.z.ai/v1"
+```
 
 ---
 
@@ -194,11 +215,13 @@ This is great for:
 The more context you give Claude Code, the better the results. Compare these prompts:
 
 **Vague (less effective):**
+
 ```
 > Make a 3D scene
 ```
 
 **Specific (much better):**
+
 ```
 > Create a Three.js scene in src/Scene.tsx with a WebXR-compatible renderer,
 > a ground plane with grid texture, ambient and directional lighting,
@@ -244,14 +267,14 @@ Claude Code will analyze the error, check your code, and propose a fix.
 
 ### Useful Keyboard Shortcuts
 
-| Shortcut | Action |
-|---|---|
-| `Shift+Tab` | Toggle plan mode |
-| `Ctrl+C` | Cancel current response |
-| `Escape` | Clear current input |
-| `/init` | Initialize CLAUDE.md |
-| `/help` | Show all commands |
-| `/clear` | Clear conversation history |
+| Shortcut    | Action                     |
+| ----------- | -------------------------- |
+| `Shift+Tab` | Toggle plan mode           |
+| `Ctrl+C`    | Cancel current response    |
+| `Escape`    | Clear current input        |
+| `/init`     | Initialize CLAUDE.md       |
+| `/help`     | Show all commands          |
+| `/clear`    | Clear conversation history |
 
 ### Work as a Team
 
